@@ -6,7 +6,6 @@
 #define NUM_PHILOS 5
 sem_t chopstick[NUM_PHILOS];
 void * philos(void *);
-void eat(int);
 int main()
  {
          int i,n[5];
@@ -30,15 +29,11 @@ void * philos(void * n)
          printf("Philosopher %d tries to pick the right chopstick\n",ph);
          sem_wait(&chopstick[(ph+1)%NUM_PHILOS]);
          printf("Philosopher %d picks the right chopstick\n",ph);
-         eat(ph);
+         printf("Philosopher %d begins to eat\n",ph);
          sleep(2);
          printf("Philosopher %d has finished eating\n",ph);
          sem_post(&chopstick[(ph+1)%NUM_PHILOS]);
          printf("Philosopher %d leaves the right chopstick\n",ph);
          sem_post(&chopstick[ph]);
          printf("Philosopher %d leaves the left chopstick\n",ph);
- }
- void eat(int ph)
- {
-         printf("Philosopher %d begins to eat\n",ph);
  }
