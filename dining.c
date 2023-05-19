@@ -8,8 +8,8 @@ sem_t chopstick[NUM_PHILOS];
 void * philos(void *);
 int main()
  {
-         int i,n[5];
-         pthread_t T[5];
+         int i,n[NUM_PHILOS];
+         pthread_t T[NUM_PHILOS];
          for(i=0;i<NUM_PHILOS;i++)
          sem_init(&chopstick[i],0,1);
          for(i=0;i<NUM_PHILOS;i++){
